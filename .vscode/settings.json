@@ -1,0 +1,4 @@
+{
+  "deno.path": "/app/deno",
+  "deno.enable": true
+}
