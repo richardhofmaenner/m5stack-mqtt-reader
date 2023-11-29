@@ -1,5 +1,8 @@
 import logger from "../lib/logger.ts";
+import sql from "../lib/postgresql.ts";
 
-export default function temperatureHandler(message: object) {
-  logger.info('MQTT message', message.toString())
+export default async function temperatureHandler(message: object) {
+  const temp = await sql`INSERT INTO temperature (client, value) VALUES ('test', ${message.toString()}) RETURNING *`
+  
+  logger.info('MQTT Temperature', message.toString())
 }
